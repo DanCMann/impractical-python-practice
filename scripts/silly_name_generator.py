@@ -7,8 +7,8 @@ import random
 def main():
     """Sets up game.
     """
-    vornamen = 'data/01_first_names.txt'
-    nachnamen = 'data/01_last_names.txt'
+    vornamen = 'data/first_names.txt'
+    nachnamen = 'data/last_names.txt'
     NameGame(vornamen, nachnamen)
 
 def get_names(fname):
