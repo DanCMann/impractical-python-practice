@@ -43,7 +43,7 @@ def pig_latin(string):
         str: Pig Latin conversion of string.
     """
 
-    vowels = ["a", "e", "i", "o", "u"]
+    vowels = "aeiou"
 
     string = string.lower()
 
