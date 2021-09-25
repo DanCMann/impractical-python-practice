@@ -7,26 +7,28 @@ def main():
     """ Main function for running pig latin game.
     """
 
-    pig_latin_game()
+    PigLatinGame()
 
-def pig_latin_game():
-    """ Turns the pig_latin function into a game.
+class PigLatinGame():
+    """Pig Latin game class.
     """
-    print("Translate into IgPay AtinLay!!\n")
 
-    string_input = input("What word do you want translated? ")
+    def __init__(self):
+        print("Translate into IgPay AtinLay!!\n")
 
-    running = True
+        self.string_input = input("What word do you want translated? ")
 
-    while running:
+        self.running = True
 
-        print("\t{}".format(pig_latin(string_input)))
+        while self.running:
 
-        string_input = input("Enter another word to keep playing? ('n' to end game) ")
+            print("\t{}".format(pig_latin(self.string_input)))
 
-        if string_input.lower() == 'n':
-            running = False
-            print("Ending game..")
+            self.string_input = input("Enter another word to keep playing? ('n' to end game) ")
+
+            if self.string_input.lower() == 'n':
+                self.running = False
+                print("Ending game..")
 
 
 def pig_latin(string):
