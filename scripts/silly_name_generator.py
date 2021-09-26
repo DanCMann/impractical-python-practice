@@ -41,13 +41,13 @@ def create_random_name(first_names, last_names):
 
     # Randomly select first name and assign to variable
 
-    index = random.randint(0, len(first_names))
+    index = random.randint(0, len(first_names)-1)
     first_name = first_names[index]
 
 
     # Randomly select last name
 
-    index = random.randint(0, len(last_names))
+    index = random.randint(0, len(last_names)-1)
     last_name = last_names[index]
 
     return first_name + " " + last_name
