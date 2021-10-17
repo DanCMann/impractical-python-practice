@@ -6,6 +6,14 @@
 import load_dictionary
 
 def find_palingrams(words):
+    """Finds all two word palingrams given a set or list of words.
+
+    Args:
+        words (set): Set or a list of words. 
+
+    Returns:
+        list: List of word palingram word pairs.
+    """
 
     palingrams = []
 
@@ -26,6 +34,8 @@ def find_palingrams(words):
     return palingrams
 
 def main():
+    """Main function for script.
+    """
     file = "data/2of4brif.txt"
     wordlist = load_dictionary.load(file)
     words = set(wordlist)
