@@ -14,6 +14,9 @@ def find_palingrams(wordlist):
         end = len(word)
         rev_word = word[::-1]
 
+        # In the original way that I did it, it did more checks.
+        #  e.g., if you just searched 'grits' it would find 'stir'.
+        #  But that seemed to be overkill, since 'stir' will find 'grits'.
         for i in range(end):
             if word[i:] == rev_word[:end-i] and rev_word[end-i:] in wordlist: 
                 palingrams.append((word, rev_word[end-i:]))
@@ -22,9 +25,12 @@ def find_palingrams(wordlist):
 
     return palingrams
 
-if __name__ == '__main__':
-
+def main():
     file = "data/2of4brif.txt"
     words = load_dictionary.load(file)
     palingrams = find_palingrams(words)
     print(palingrams)
+
+
+if __name__ == '__main__':
+    main()
