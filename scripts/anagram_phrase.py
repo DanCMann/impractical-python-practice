@@ -69,7 +69,6 @@ class InputPhrase():
             self.find_partial_anagrams()
 
     def find_partial_anagrams(self):
-        anagrams = []
         for word in self.anagrams.dictionary.words:
             test = ''
             word_letter_map = Counter(word.lower())
