@@ -19,6 +19,10 @@ class Dictionary():
             with open(self.file) as f:
                 self.words = f.read().strip().split('\n')
                 self.words = [word.lower() for word in self.words]
+                # make sure "a" and "I" are included
+                self.words.append('a')
+                self.words.append('i')
+                self.words = sorted(self.words)
 
         except IOError as e:
             print("{}\nError opening {}. Terminating program.".format(e, self.file), file = sys.stderr)
