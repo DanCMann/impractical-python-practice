@@ -69,16 +69,15 @@ class InputPhrase():
             self.find_partial_anagrams()
 
     def find_partial_anagrams(self):
-        for i in range(self.n_letters-1):
-            for j in range(self.n_letters-i):
-                self._copy = list(self.phase_nospace)
-                self._delcopy = self._copy[j:((j+1)+i)]
-                del self._copy[j:((j+1)+i)]
-
-                sub_anagram1 = Anagrams(self._copy)
-                sub_anagram2 = Anagrams(self._delcopy)
-                self.add_anagrams(sub_anagram1.list)
-                self.add_anagrams(sub_anagram2.list)
+        anagrams = []
+        for word in self.anagrams.dictionary.words:
+            test = ''
+            word_letter_map = Counter(word.lower())
+            for letter in word:
+                if word_letter_map[letter] <= self.counter[letter]:
+                    test += letter
+            if Counter(test) == word_letter_map:
+                self.add_anagrams([word])
 
     def print_all_anagrams(self):
         print(*self.all_anagrams)
@@ -141,8 +140,9 @@ class Program():
     def quit(self):
         self.running = False
 
-    def main_task(self): ### these next two methods can probably be merged 
+    def main_task(self):
         # Accept a name from the user
+        # This should be changed so that the leftover letters are automatically used and the user has the chance to accept or reject
         while self.anagram_phrase.n_letters < self.initial_phrase.n_letters or self.running == False:
             if self.initial_phrase.phrase == "__init":
                 self.get_input(first=True)
