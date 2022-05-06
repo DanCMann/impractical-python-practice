@@ -4,7 +4,7 @@
 # Task: "[W]rite a simple Python program that generates nutty names by randomly combining first names and surnames."
 #       Convert to a more object oriented approach. 
 import random
-
+from Game import Game
 class Main():
     """Sets up game.
     """
@@ -15,28 +15,25 @@ class Main():
         game.run()
 
 
-class NameGame():
+class NameGame(Game):
     """Game that creates random names from text files containing first and last names.
     """
     def __init__(self, first_name_file, last_name_file):
+        super().__init__()
         self.first_name_file = first_name_file
         self.last_name_file = last_name_file
 
-    def run(self):
+    def game_loop(self):
 
         self.first_names = self.get_names(self.first_name_file)
         self.last_names = self.get_names(self.last_name_file)
 
-        running = True
-
-        while running:
-            response = input("Do you want a silly name?: Y/N ")
-            if response.lower() == 'y':
-                self.create_random_name(self.first_names, self.last_names)
-                print("Your Name is \n\t{}\n".format(self.name))
-            else:
-                print("OK, ending game")
-                running = False
+        self.response = input("Do you want a silly name?: Y/N ")
+        if self.response.lower() == 'y':
+            self.create_random_name(self.first_names, self.last_names)
+            print("Your Name is \n\t{}\n".format(self.name))
+        else:
+            self.end_game()
 
     def get_names(self, fname):
         """Opens a text file, splits line by commas, and returns a list of strings.
